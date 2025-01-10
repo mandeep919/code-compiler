@@ -9,7 +9,7 @@ const languages = [
   { code: "cpp", name: "C++" },
   { code: "rust", name: "Rust" },
   { code: "php", name: "PHP" },
-  { code: "html", name: "HTML" }, // HTML is usually static code, so this can be handled separately
+  { code: "html", name: "HTML" },
 ];
 
 const App = () => {
@@ -40,11 +40,13 @@ const App = () => {
         const message = JSON.parse(event.data);
         if (message.type === "stdout") {
           setOutput((prevOutput) => prevOutput + message.data);
+        } else if (message.type === "stderr") {
+          setError((prevError) => prevError + message.data);
         } else if (message.type === "error") {
-          setError(message.data);
+          setError("Error: " + message.data);
         }
       } catch (err) {
-        setError("Error parsing the response from server.");
+        setError("Error parsing WebSocket message.");
         console.error("Error parsing WebSocket message", err);
       }
     };
@@ -104,8 +106,8 @@ const App = () => {
   };
 
   const handleClearOutput = () => {
-    setOutput(""); // Clear the output
-    setError(null); // Clear any previous errors
+    setOutput("");
+    setError(null);
   };
 
   return (
@@ -174,6 +176,7 @@ const App = () => {
           <div className="output flex w-full min-w-full h-[410px]">
             <pre className="w-full overflow-auto whitespace-pre-wrap break-words p-3">
               {output}
+              {error && error}
             </pre>
           </div>
         </div>
