@@ -1,0 +1,78 @@
+.App {
+	font-family: Arial, sans-serif;
+	background-color: #f4f4f9;
+	min-height: 100vh;
+}
+
+h1 {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.editor-container {
+	display: flex;
+	justify-content: space-between;
+}
+
+.editor {
+	width: 45%;
+}
+
+textarea {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+.buttons {
+	display: flex;
+	gap: 10px;
+}
+
+button {
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	background-color: #007bff;
+	color: white;
+}
+
+button:disabled {
+	background-color: #cccccc;
+	cursor: not-allowed;
+}
+
+.output {
+	background-color: #fff;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+pre {
+	white-space: pre-wrap;
+	word-wrap: break-word;
+	background-color: #f5f5f5;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+.online {
+	background-color: #22c55e;
+}
+.offline {
+	background-color: #991b1b;
+}
+.status {
+	width: 15px;
+	height: 15px;
+	border-radius: 100%;
+	display: inline-block;
+	margin-right: 10px;
+	margin-left: 5px;
+}
+textarea:focus-visible {
+	outline: 0;
+}
